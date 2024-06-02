@@ -1,10 +1,10 @@
-deepspeed /home/sagemaker-user/LLaVA/llava/train/train_mem.py \
+deepspeed ./LLaVA/llava/train/train_mem.py \
     --lora_enable True --lora_r 128 --lora_alpha 256 --mm_projector_lr 2e-5 \
-    --deepspeed /home/sagemaker-user/LLaVA/scripts/zero3.json \
+    --deepspeed ./LLaVA/scripts/zero3.json \
     --model_name_or_path liuhaotian/llava-v1.5-7b \
     --version v1 \
-    --data_path /home/sagemaker-user/sample-training-data.json \
-    --image_folder /home/sagemaker-user/train2017 \
+    --data_path ./sample-training-data.json \
+    --image_folder ./train2017 \
     --vision_tower openai/clip-vit-large-patch14-336 \
     --mm_projector_type mlp2x_gelu \
     --mm_vision_select_layer -2 \
@@ -13,7 +13,7 @@ deepspeed /home/sagemaker-user/LLaVA/llava/train/train_mem.py \
     --image_aspect_ratio pad \
     --group_by_modality_length True \
     --bf16 False \
-    --output_dir ./checkpoints/llava-v1.5-13b-task-lora \
+    --output_dir ./llava-training-output-lora \
     --num_train_epochs 5 \
     --per_device_train_batch_size 5 \
     --per_device_eval_batch_size 2 \
