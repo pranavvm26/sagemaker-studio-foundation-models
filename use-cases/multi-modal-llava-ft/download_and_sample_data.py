@@ -12,16 +12,16 @@ if __name__ == "__main__":
         repo_id="liuhaotian/LLaVA-Instruct-150K", 
         filename="llava_instruct_80k.json", 
         repo_type="dataset", 
-        local_dir="/home/sagemaker-user/"
+        local_dir="./"
     )
 
     image_folder = "./train2017"
     temp_images = os.listdir(image_folder)
-    list_data_dict = json.load(open("/home/sagemaker-user/llava_instruct_80k.json", "r"))
+    list_data_dict = json.load(open("./llava_instruct_80k.json", "r"))
     sample_list_data_dict = []
     for row in tqdm(list_data_dict, total=len(list_data_dict), desc="slicing dataset"):
         if row['image'] in temp_images:
             sample_list_data_dict.append(row)
     
-    with open('/home/sagemaker-user/sample-training-data.json', 'w') as f:
+    with open('./sample-training-data.json', 'w') as f:
         json.dump(sample_list_data_dict, f)
